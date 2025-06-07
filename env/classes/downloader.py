@@ -8,7 +8,7 @@ from utils.checks import is_playlist_url
 
 
 class VideoDownloader:
-    def __init__(self) -> None:
+    def __init__(self, download_path: str = config.PATH_DEFAULT_DOWNLOADS) -> None:
         # Define download options
         self._download_options: dict[str, Any] = {
             "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
@@ -34,7 +34,9 @@ class VideoDownloader:
         }
 
         # Configure download directory
-        self._download_path: str = config.PATH_DEFAULT_DOWNLOADS
+        self._download_path: str = download_path
+        
+        self._create_download_dir()
 
     def _create_download_dir(self) -> None:
         os.makedirs(name=self._download_path, exist_ok=True)
@@ -57,14 +59,9 @@ class VideoDownloader:
             )
             print("Detected single video URL. Downloading video...")
 
-        try:
-            # Download content
-            with YoutubeDL(self._download_options) as ydl:
-                ydl.download([url])  # type:ignore
-                print(
-                    f"\nDownload completed successfully! Files saved to: {self._download_path}"
-                )
-        except Exception as e:
-            print(f"Exception has occurred while downloading video: {e}")
-        finally:
-            input("Press ENTER to continue...")
+        # Download content
+        with YoutubeDL(self._download_options) as ydl:
+            ydl.download([url])  # type:ignore
+            print(
+                f"\nDownload completed successfully! Files saved to: {self._download_path}"
+            )

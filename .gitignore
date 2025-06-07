@@ -1,5 +1,6 @@
-/YT-Downloads/
+/.vscode/
 /.mypy_cache/
 /.history/
+/storage/
+*test*
 __pycache__/
-/.vscode/
