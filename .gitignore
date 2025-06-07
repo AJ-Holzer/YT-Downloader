@@ -2,5 +2,6 @@
 /.mypy_cache/
 /.history/
 /storage/
+/build/
 *test*
 __pycache__/
