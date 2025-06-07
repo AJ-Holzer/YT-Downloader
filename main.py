@@ -14,7 +14,7 @@ def main(page: ft.Page):
             feedback.update()
             return
         elif not url:
-            feedback.value = "Provide a URL!"
+            feedback.value = "Provide an URL!"
             feedback.color = "red"
             feedback.update()
             return
@@ -36,7 +36,7 @@ def main(page: ft.Page):
             feedback.color = "red"
             feedback.update()
 
-    url_input = ft.TextField(label="YouTube Video URL", width=400)
+    url_input = ft.TextField(label="YouTube Video URL")
     feedback = ft.Text(value="", color="green")
 
     pick_files_dialog = ft.FilePicker(on_result=pick_files_result)
@@ -50,22 +50,25 @@ def main(page: ft.Page):
     )
 
     page.add(
-        ft.Row(
-            controls=[
-                ft.Column(
-                    [
-                        url_input,
-                        download_btn,
-                        feedback,
-                    ],
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                    expand=True,
-                ),
-            ],
-            expand=True,
-            alignment=ft.MainAxisAlignment.CENTER,
-            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        ft.Container(
+            ft.Row(
+                controls=[
+                    ft.Column(
+                        [
+                            url_input,
+                            download_btn,
+                            feedback,
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        expand=True,
+                    ),
+                ],
+                expand=True,
+                alignment=ft.MainAxisAlignment.CENTER,
+                vertical_alignment=ft.CrossAxisAlignment.CENTER,
+            ),
+            padding=40,
         )
     )
 
