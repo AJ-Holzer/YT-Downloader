@@ -36,7 +36,7 @@ def main(page: ft.Page):
             feedback.color = "red"
             feedback.update()
 
-    url_input = ft.TextField(label="YouTube Video URL")
+    url_input = ft.TextField(label="YouTube Video URL", multiline=True)
     feedback = ft.Text(value="", color="green")
 
     pick_files_dialog = ft.FilePicker(on_result=pick_files_result)
@@ -51,7 +51,7 @@ def main(page: ft.Page):
 
     page.add(
         ft.Container(
-            ft.Row(
+            content=ft.Row(
                 controls=[
                     ft.Column(
                         [
@@ -69,6 +69,8 @@ def main(page: ft.Page):
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
             padding=40,
+            alignment=ft.alignment.center,
+            expand=True,
         )
     )
 
