@@ -1,5 +1,4 @@
 import os
-from typing import Any
 
 from yt_dlp import YoutubeDL  # type:ignore[import-untyped]
 
@@ -10,7 +9,7 @@ from utils.checks import is_playlist_url
 class VideoDownloader:
     def __init__(self, download_path: str = config.PATH_DEFAULT_DOWNLOADS) -> None:
         # Define download options
-        self._download_options: dict[str, Any] = {
+        self._download_options: dict[str, str | int | bool | list[dict[str, str]]] = {
             "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             "merge_output_format": "mp4",
             "ignoreerrors": True,
@@ -35,7 +34,7 @@ class VideoDownloader:
 
         # Configure download directory
         self._download_path: str = download_path
-        
+
         self._create_download_dir()
 
     def _create_download_dir(self) -> None:

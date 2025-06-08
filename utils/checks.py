@@ -1,4 +1,3 @@
-from typing import Any
 from urllib.parse import ParseResult, parse_qs, urlparse
 
 
@@ -13,5 +12,5 @@ def is_playlist_url(url: str) -> bool:
         bool: True if URL is a playlist, False if single video
     """
     parsed_url: ParseResult = urlparse(url)
-    query_params: dict[str, Any] = parse_qs(parsed_url.query)
+    query_params: dict[str, list[str]] = parse_qs(parsed_url.query)
     return "list" in query_params

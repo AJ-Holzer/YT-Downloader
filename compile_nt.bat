@@ -1,0 +1,1 @@
+pyinstaller --onefile --name="YouTube-Downloader" main.py
