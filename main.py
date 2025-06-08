@@ -9,7 +9,9 @@ def main() -> None:
 
     while True:
         # Clear the terminal
-        os.system(command="cls" if sys.platform == "nt" else "clear")
+
+        # trunk-ignore(bandit/B605)
+        os.system("cls" if sys.platform == "nt" else "clear")
 
         # Ask for url
         yt_url: str = input("Enter the url of the video to download: ")
